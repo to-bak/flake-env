@@ -18,8 +18,7 @@
             cd "$ENV_DIR" && \
             rm -rf .git && \
             git init && \
-            nix registry add --extra-experimental-features "flakes nix-command" flake:flake-env git+file:///"$ENV_DIR"/ && \
-            nix flake update --extra-experimental-features "flakes nix-command"
+            nix registry add --extra-experimental-features "flakes nix-command" flake:flake-env git+file:///"$ENV_DIR"/
           '';
         };
       });
