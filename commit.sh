@@ -1,3 +1,2 @@
 #!/bin/bash
-
-nix-shell -p git --run 'GIT_CONFIG_GLOBAL=/dev/null git add . && GIT_CONFIG_GLOBAL=/dev/null git commit --allow-empty "update flake-env"'
+nix-shell -p git --run "cd $HOME/.flake-env && git add . && git config user.email 'flake-env@github.com' && git config user.name 'flake-env' && git commit --allow-empty -m 'update flake-env'"
