@@ -18,4 +18,3 @@ nix run github:to-bak/flake-env#bootstrap --extra-experimental-features "nix-com
 ```
 
 4. Populate `$HOME/.flake-env/env.nix` with variables you desire.
-5. Run `$HOME/commit.sh` to add the flake to `nix registry` and initialize the folder as a local git project (required for flakes).
