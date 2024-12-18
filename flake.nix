@@ -14,7 +14,7 @@
           runtimeInputs = [ pkgs.git ];
           text = ''
             ENV_DIR=$HOME/.flake-env
-            git clone https://github.com/to-bak/home.git "$ENV_DIR" && \
+            git clone https://github.com/to-bak/flake-env.git "$ENV_DIR" && \
             rm -rf !$/.git
           '';
         };
