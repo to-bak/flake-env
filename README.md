@@ -11,3 +11,4 @@ sh <(curl -L https://nixos.org/nix/install) --daemon
 nix run github:to-bak/flake-env#bootstrap --extra-experimental-features "nix-command flakes"
 ```
 3. Populate `$HOME/.flake-env/env.nix` with variables you desire.
+4. Run `commit.sh` script to apply changes.
