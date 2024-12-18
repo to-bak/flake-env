@@ -14,10 +14,12 @@
           runtimeInputs = [ pkgs.git ];
           text = ''
             ENV_DIR=$HOME/.flake-env
-            GIT_CONFIG_GLOBAL=/dev/null git clone https://github.com/to-bak/flake-env.git "$ENV_DIR" && \
-            rm -rf "$ENV_DIR"/.git && \
-            git init "$ENV_DIR" && \
-            nix registry add --extra-experimental-features "flakes nix-command" flake:flake-env git+file:///"$ENV_DIR"/
+            git clone https://github.com/to-bak/flake-env.git "$ENV_DIR" && \
+            cd "$ENV_DIR" && \
+            rm -rf .git && \
+            git init && \
+            nix registry add --extra-experimental-features "flakes nix-command" flake:flake-env git+file:///"$ENV_DIR"/ && \
+            nix flake update --extra-experimental-features "flakes nix-command"
           '';
         };
       });
