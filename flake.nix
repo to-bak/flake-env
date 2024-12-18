@@ -1,7 +1,21 @@
 {
-  description = "Environment flake";
+  description = "Nix environment flake";
 
-  outputs = { ... }: {
-    nixosModules = { environment = import ./environment.nix; };
-  };
+  inputs.nixpkgs.url = "github:nixos/nixpkgs";
+  inputs.flake-utils.url = "github:numtide/flake-utils";
+
+  outputs = inputs@{ nixpkgs, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+      let pkgs = import nixpkgs { inherit system; };
+      in {
+        nixosModules = { environment = import ./environment.nix; };
+        packages.bootstrap = pkgs.writeShellApplication {
+          name = "bootstrap";
+          runtimeInputs = [ pkgs.git ];
+          text = ''
+            ENV_DIR=$HOME/.flake-env
+            git clone https://github.com/to-bak/home.git "$ENV_DIR"
+          '';
+        };
+      });
 }

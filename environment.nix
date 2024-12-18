@@ -1,3 +1,0 @@
-{
-   # add variables here
-}
