@@ -17,7 +17,7 @@
             GIT_CONFIG_GLOBAL=/dev/null git clone https://github.com/to-bak/flake-env.git "$ENV_DIR" && \
             rm -rf "$ENV_DIR"/.git && \
             git init "$ENV_DIR" && \
-            nix registry add flake:flake-env git+file:///"$ENV_DIR"/
+            nix registry add --extra-experimental-features "flakes nix-command" flake:flake-env git+file:///"$ENV_DIR"/
           '';
         };
       });
